@@ -172,10 +172,20 @@ curl https://geometrylite.poki2.online/sitemap.xml
 | Backlink count & quality | GSC → Links → External links | Monthly |
 | Twitter Card preview | [Twitter Card Validator](https://cards-dev.twitter.com/validator) | After og: tag changes |
 
-## Decisions
-- Focus on unblocked games and Geometry Dash Lite keywords, including long-tail variations
-- Prioritize homepage and main game pages for SEO
-- Execute on-page and off-page optimizations in parallel, with ongoing monitoring
+## Decisions ✅ IMPLEMENTED
+
+| Decision | Rationale | Status |
+|---|---|---|
+| Focus on "Geometry Dash Lite" + "unblocked games g+" as P1 keywords | Medium competition, natural brand fit — highest ROI vs high-DA competitors owning "unblocked games 66" | ✅ Implemented in title, H1, meta desc, keywords |
+| Use "unblocked games 66/76" as P2 via long-tail / FAQ content, not direct competition | These SERPs are dominated by branded sites with 100K+ backlinks; better to capture adjacent traffic | ✅ Implemented via FAQ section in index.html |
+| VideoGame JSON-LD schema on all game pages | No competitor has it — differentiator for Rich Results eligibility | ✅ Implemented on 9 pages |
+| Domain config via `.domain` + `set-domain.sh` — no hardcoded domain in source | Enables zero-friction migration if subdomain changes | ✅ Implemented |
+| Absolute canonical + og:url on every page | Prevents Google treating relative-path pages as duplicate content | ✅ Implemented on all 16 pages |
+| Twitter Card meta on all pages | Enables rich previews when any page is shared on Twitter/X, Reddit, Slack | ✅ Implemented on all 16 pages |
+| CWV (LCP/CLS/INP) reported to GA4 as custom events | Field data feeds into Google ranking signals; baseline measurement before off-page work begins | ✅ Implemented on all 16 pages |
+| English-only content (no i18n) | Audience is English-speaking school/office users; avoid thin multilingual content penalties | ✅ Decision confirmed |
+| Original game descriptions — no copy from upstream geometrylite.github.io | Avoid duplicate content penalty from identical upstream text | ✅ All descriptions are original |
+| Off-page: organic-first (directories, Reddit, YouTube) before paid promotion | Budget unknown; organic links have lasting value; revisit paid if organic growth stalls after 3 months | ❌ Pending manual actions |
 
 ## Further Considerations
 - Multilingual/multi-region SEO? (Recommendation: start with English)
