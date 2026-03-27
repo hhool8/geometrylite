@@ -121,10 +121,29 @@ curl https://geometrylite.poki2.online/sitemap.xml
 ```
 
 ## Relevant Files
-- geometrylite/ (site content, pages, static assets)
-- h5games_poki2/, h5games_poki2_geodash/ (shared templates or SEO configs)
-- public/ (robots.txt, sitemap.xml)
-- scripts/ (SEO automation scripts)
+
+### Site Pages (geometrylite/)
+- `index.html` — Homepage + main game; fully SEO-optimised
+- `egg-dash.html`, `wave-dash.html`, `geometry-lite-classic.html`, `geometry-jump.html`, `geometry-game-3d.html`, `spooky-dash.html`, `tap-road-beat.html`, `xmas-dash.html` — Game pages with VideoGame schema
+- `about-us.html`, `contact-us.html`, `dmca.html`, `privacy-policy.html`, `terms-of-service.html`, `404.html`, `favorite.html` — Support pages
+- `robots.txt` — Crawl directives; blocks /embed/, points to sitemap
+- `sitemap.xml` — 18 URLs with priorities and lastmod dates
+- `CNAME` — `geometrylite.poki2.online`
+- `.domain` — Domain config for migration script
+
+### Scripts (scripts/)
+| Script | Purpose |
+|---|---|
+| `set-domain.sh` | One-command domain migration — reads `.domain`, replaces across all HTML/sitemap/robots/CNAME |
+| `add_schema.py` | Inject VideoGame JSON-LD schema into all game pages |
+| `seo_offpage.py` | Add Twitter Card meta tags + fix share modal URLs across all pages |
+| `add_cwv_tracking.py` | Inject Core Web Vitals (LCP/CLS/INP) GA4 event tracking into all pages |
+| `fix_support_pages.py` | Fix canonical + og:url on support/legal pages |
+| `seo_verify.py` | Full SEO audit — outputs per-page tag status table to `docs/seo-audit-report.md` |
+
+### Docs (docs/)
+- `off-page-guide.md` — Game directory submission list, Reddit/social targets, outreach templates
+- `seo-audit-report.md` — Latest generated SEO audit report (re-run: `python3 scripts/seo_verify.py`)
 
 ## Verification
 - Check indexing with: site:geometrylite.poki2.online
