@@ -30,7 +30,9 @@ python3 scripts/seo_verify.py
 | `resources/css/style.min.css` | Single minified stylesheet (Tailwind + custom) |
 | `resources/fonts/` | Self-hosted woff2: Nunito-Regular (32 K) + Orbitron-Bold (9 K) |
 | `robots.txt` | Allows all; disallows `/embed/`; points to sitemap |
-| `sitemap.xml` | 18 URLs with priorities and lastmod dates |
+| `sitemap.xml` | 18 URLs with priorities and dynamic lastmod (git-based) |
+| `data/image/game/` | 10 game thumbnails (186×186 PNG) for og:image / twitter:image |
+| `data/image/options/og-cover.png` | 1200×630 brand cover image for homepage og:image / Twitter Card |
 | `CNAME` | `geometrylite.poki2.online` |
 | `.domain` | Active domain used by `set-domain.sh` |
 
@@ -46,6 +48,11 @@ python3 scripts/seo_verify.py
 | `scripts/add_cwv_tracking.py` | Inject Core Web Vitals (LCP/CLS/INP) GA4 events |
 | `scripts/fix_support_pages.py` | Fix canonical + og:url on support/legal pages |
 | `scripts/fix_github_io_links.py` | Replace residual github.io refs (favicon, nav, domain_url) |
+| `scripts/fix_og_images.py` | Fix 404.html github.io image refs; update homepage og:image to cover |
+| `scripts/gen_og_cover.py` | Generate 1200×630 og-cover.png (Pillow; requires `.venv`) |
+| `scripts/gen_sitemap.py` | Regenerate sitemap.xml with lastmod from `git log` per file |
+| `scripts/copy_game_thumbs.py` | Copy cache/*-m186x186.png → data/image/game/ |
+| `scripts/download_game_images.py` | Attempt download + HTML ref migration for game images |
 | `scripts/seo_verify.py` | Full per-page SEO tag audit → `docs/seo-audit-report.md` |
 | `scripts/replace_font.py` | Font replacement utility (Dosis → Nunito) |
 
@@ -56,7 +63,7 @@ python3 scripts/seo_verify.py
 | Area | Detail |
 |---|---|
 | `robots.txt` | Allows all; `Disallow: /embed/`; links to sitemap |
-| `sitemap.xml` | 18 URLs, priority weights, `lastmod 2026-03-27` |
+| `sitemap.xml` | 18 URLs, priority weights, dynamic `lastmod` from `git log` per file |
 | Canonical / og:url | Absolute `https://geometrylite.poki2.online/…` on all 16 pages |
 | VideoGame JSON-LD | All 9 game pages (index + 8 games) |
 | H1 / Title / Meta | "Geometry Dash Lite Unblocked" + all P1/P2 keywords |
@@ -65,7 +72,9 @@ python3 scripts/seo_verify.py
 | Core Web Vitals | LCP/CLS/INP as custom GA4 events on all 16 pages |
 | Internal links | Contextual cross-links on all 8 game pages |
 | Font | Dosis → Nunito (self-hosted woff2, latin subset 32 K) |
-| Domain links | `geometrylite.github.io` → `poki2.online` for favicon, nav, domain_url, text links |
+| Domain links | All `geometrylite.github.io` refs replaced with `poki2.online` (all pages + 404.html) |
+| Game thumbnails | 10 PNG committed to `data/image/game/`; 36 HTML refs migrated to poki2.online |
+| OG cover image | 1200×630 `og-cover.png` — homepage og:image / twitter:image |
 | GA4 | G-KKVKM3C6FM on all 16 pages |
 | GSC | Verification meta tag on all pages |
 
@@ -73,7 +82,8 @@ python3 scripts/seo_verify.py
 
 | Item | Detail |
 |---|---|
-| Game thumbnail images | `og:image` / `twitter:image` on 17 pages still point to `geometrylite.github.io/data/image/game/*/…` — images not in this repo; need local copies under `data/image/game/` |
+| FAQPage + WebSite schema | Homepage has no `FAQPage` or `WebSite` JSON-LD yet — high impact for Rich Results |
+| Game page og:image size | Each game page uses 186×186 thumbnails; Twitter/OG recommends 1200×630 (update when high-res assets available) |
 
 ## Off-Page — Pending (manual)
 
@@ -90,7 +100,6 @@ python3 scripts/seo_verify.py
 ## Docs
 
 - [`SEO-PLAN-geometrylite.md`](SEO-PLAN-geometrylite.md) — Full SEO strategy and implementation log
-- [`SEO-PLAN-unblockedgamesGplus.md`](SEO-PLAN-unblockedgamesGplus.md) — SEO content plan for new Unblocked Games G+ site
 - [`docs/off-page-guide.md`](docs/off-page-guide.md) — Game directory submission list, Reddit/social templates
 - [`docs/seo-audit-report.md`](docs/seo-audit-report.md) — Latest audit (regenerate: `python3 scripts/seo_verify.py`)
 
