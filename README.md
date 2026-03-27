@@ -126,3 +126,42 @@ python3 scripts/seo_verify.py
 | unblocked games 66 / 76 | P2 | Top 10 |
 | games unblocked | P2 | Top 10 |
 | unblocked games 77 | P3 | Top 20 |
+
+---
+
+## Work Status (as of 2026-03-27)
+
+### ✅ Completed — All Technical Work Done
+
+| Area | Detail |
+|---|---|
+| Title / H1 / Meta | "Geometry Dash Lite Unblocked" + all P1/P2/P3 keywords |
+| VideoGame JSON-LD | All 9 game pages (homepage + 8 game pages) |
+| WebSite + FAQPage JSON-LD | Homepage — enables Sitelinks SearchBox + FAQ Rich Result |
+| Canonical / og:url | Absolute URLs on all 16 pages |
+| Twitter Card | All 16 pages |
+| OG cover image | 1200×630 `og-cover.png` for homepage; 186×186 thumbnails on game pages |
+| Game thumbnails | 10 PNG files in `data/image/game/`; 36 HTML refs migrated to poki2.online |
+| github.io cleanup | All residual refs replaced across all pages incl. 404.html |
+| robots.txt / sitemap | 18 URLs; dynamic `lastmod` via `gen_sitemap.py` (git log per file) |
+| Font | Nunito self-hosted woff2, latin subset 32 K |
+| GA4 + CWV | G-KKVKM3C6FM + LCP/CLS/INP custom events on all 16 pages |
+| Domain migration | `.domain` + `set-domain.sh` (full-depth, no hardcoded domain) |
+| Documentation | README.md + SEO-PLAN-geometrylite.md both up to date |
+
+### ⚠️ Needs Refinement
+
+| Item | Current State | Suggestion |
+|---|---|---|
+| Game page og:image size | 186×186 px on 8 game pages | Replace files in `data/image/game/*/` with 1200×630 when high-res art is available — no HTML changes needed |
+| Internal cross-linking | Only footer + same-domain nav links | Add 3 "related games" links on each game detail page |
+
+### ❌ Not Started — Manual Off-Page Actions Only
+
+| Priority | Task |
+|---|---|
+| 🔴 High | Submit to CrazyGames, itch.io, Newgrounds, Poki — see `docs/off-page-guide.md` |
+| 🔴 High | Reddit posts: r/WebGames, r/geometrydash, r/teenagers |
+| 🟡 Medium | Create @geometrylite on Twitter, Facebook, Instagram |
+| 🟡 Medium | Link exchange outreach (unblockedgames66.io and similar) |
+| 🟢 Low | YouTube gameplay recordings (backlink source) |
