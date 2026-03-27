@@ -145,12 +145,32 @@ curl https://geometrylite.poki2.online/sitemap.xml
 - `off-page-guide.md` — Game directory submission list, Reddit/social targets, outreach templates
 - `seo-audit-report.md` — Latest generated SEO audit report (re-run: `python3 scripts/seo_verify.py`)
 
-## Verification
-- Check indexing with: site:geometrylite.poki2.online
-- Track keyword rankings (Ahrefs, SEMrush, Search Console, etc.)
-- Review meta tags, structured data, internal links, and content quality
-- Monitor backlink quantity and quality
-- Test page speed and mobile compatibility
+## Verification ✅ AUTOMATED + MANUAL CHECKLIST
+
+### Automated (run locally)
+```bash
+# Full per-page SEO tag audit — saves report to docs/seo-audit-report.md
+python3 scripts/seo_verify.py
+
+# Verify robots.txt and sitemap are live
+curl https://geometrylite.poki2.online/robots.txt
+curl https://geometrylite.poki2.online/sitemap.xml
+```
+
+### Manual (browser / external tools)
+
+| Check | Tool / URL | Frequency |
+|---|---|---|
+| Google indexing coverage | [`site:geometrylite.poki2.online`](https://www.google.com/search?q=site:geometrylite.poki2.online) in Google | Weekly |
+| Keyword rankings (P1/P2/P3) | GSC → Performance → Queries | Weekly |
+| Request indexing for new/changed pages | GSC → URL Inspection → Request Indexing | On each deploy |
+| Submit / re-verify sitemap | GSC → Sitemaps → `https://geometrylite.poki2.online/sitemap.xml` | On sitemap change |
+| Rich Results / Schema validity | [Rich Results Test](https://search.google.com/test/rich-results?url=https%3A%2F%2Fgeometrylite.poki2.online) | After schema changes |
+| PageSpeed / Core Web Vitals (lab) | [PageSpeed Insights](https://pagespeed.web.dev/?url=https%3A%2F%2Fgeometrylite.poki2.online) | Monthly |
+| Core Web Vitals (field data) | GSC → Core Web Vitals report | Monthly |
+| Mobile-Friendly | [Mobile-Friendly Test](https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fgeometrylite.poki2.online) | On layout changes |
+| Backlink count & quality | GSC → Links → External links | Monthly |
+| Twitter Card preview | [Twitter Card Validator](https://cards-dev.twitter.com/validator) | After og: tag changes |
 
 ## Decisions
 - Focus on unblocked games and Geometry Dash Lite keywords, including long-tail variations
