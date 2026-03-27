@@ -81,15 +81,44 @@ Boost the Google ranking of the subdomain geometrylite.poki2.online for the foll
 | Domain migration script | ✅ Done | `.domain` file + `scripts/set-domain.sh` for one-command migration |
 | Internal Linking | ⚠️ Partial | Footer + same-domain game links exist; deeper cross-linking TBD |
 
-## 3. Off-Page Optimization
-- Link Building: Acquire high-quality, relevant backlinks (game directories, forums, blogs, social media).
-- Social Media Promotion: Share on Reddit, Twitter, Facebook, etc., to attract organic traffic and links.
-- Partnerships: Collaborate with other unblocked games sites or bloggers for mutual promotion.
+## 3. Off-Page Optimization ✅ TECHNICAL SETUP COMPLETE — ACTIONS PENDING
 
-## 4. Monitoring & Adjustment
-- Use Google Search Console, Google Analytics, etc., to monitor rankings, traffic, and indexing.
-- Regularly review and adjust keyword and content strategies.
-- Track Google algorithm updates and adapt SEO tactics accordingly.
+| Task | Status | Details |
+|---|---|---|
+| Twitter Card meta tags | ✅ Done | Added `twitter:card/title/description/image/site` to all 16 HTML pages via `scripts/seo_offpage.py` |
+| Share modal URL fix | ✅ Done | Fixed hardcoded `github.io` URL → correct per-page URL on all 16 pages |
+| Off-page action guide | ✅ Done | Full guide at `docs/off-page-guide.md` — directories, forums, social media, outreach templates |
+| Game directory submissions | ❌ Manual action | Submit to CrazyGames, itch.io, Newgrounds, Poki — see `docs/off-page-guide.md` |
+| Reddit posts | ❌ Manual action | Post in r/WebGames, r/geometrydash, r/teenagers |
+| Social accounts | ❌ Manual action | Create @geometrylite on Twitter, Facebook, Instagram |
+| Link exchange outreach | ❌ Manual action | Contact unblockedgames66.io, GitHub Pages repos |
+| YouTube gameplay videos | ❌ Manual action | Upload walkthroughs — embeds create backlinks |
+
+> Full actionable checklist: see [`docs/off-page-guide.md`](docs/off-page-guide.md)
+
+## 4. Monitoring & Adjustment ✅ TECHNICAL SETUP COMPLETE
+
+| Task | Status | Details |
+|---|---|---|
+| Google Analytics (GA4) | ✅ Active | G-KKVKM3C6FM on all 16 HTML pages |
+| Google Search Console | ✅ Active | GSC verification meta tag on all pages; sitemap submitted |
+| Core Web Vitals (GA4 events) | ✅ Done | LCP, CLS, INP reported as custom GA4 events via `scripts/add_cwv_tracking.py` |
+| Ranking monitoring | ⚠️ Manual | Use GSC Performance tab weekly; check target keywords P1/P2/P3 |
+| Backlink monitoring | ⚠️ Manual | Use Google Search Console → Links or Ahrefs free tools |
+| Monthly review | ⚠️ Manual | Monthly: update content, fix broken links, refresh lastmod in sitemap |
+
+**Key monitoring commands:**
+```bash
+# Check indexing status
+site:geometrylite.poki2.online
+
+# Verify new robots.txt / sitemap
+curl https://geometrylite.poki2.online/robots.txt
+curl https://geometrylite.poki2.online/sitemap.xml
+
+# GSC index request
+# → Google Search Console → URL Inspection → Request Indexing
+```
 
 ## Relevant Files
 - geometrylite/ (site content, pages, static assets)
