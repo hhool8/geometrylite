@@ -24,7 +24,12 @@ Boost the Google ranking of the subdomain geometrylite.poki2.online for the foll
 | Google Analytics | ✅ Active | G-KKVKM3C6FM deployed on all pages |
 | GSC Verification | ✅ Active | meta google-site-verification present on all pages |
 | about-us domain | ✅ Fixed | Replaced geometrylite.github.io → geometrylite.poki2.online |
-| Schema/Structured Data | ❌ Missing | No GameApplication or WebPage schema — next priority |
+| Schema/Structured Data | ✅ Fixed | VideoGame JSON-LD on all 9 game pages; WebSite + FAQPage schema on homepage |
+| Font | ✅ Fixed | Replaced Dosis with Nunito (self-hosted woff2, latin subset 32 K) |
+| github.io links | ✅ Fixed | All `geometrylite.github.io` refs replaced with `poki2.online` across all pages incl. 404.html |
+| Game thumbnails | ✅ Fixed | 10 PNG images committed to `data/image/game/`; 36 og:image/twitter:image HTML refs migrated |
+| OG cover image | ✅ Fixed | 1200×630 `data/image/options/og-cover.png` generated; homepage og:image/twitter:image updated |
+| Sitemap lastmod | ✅ Fixed | Dynamic generation via `gen_sitemap.py` — reads `git log` per file |
 
 ### ✅ Keyword Priority & Target Rankings (2026-03-27)
 
@@ -75,10 +80,15 @@ Boost the Google ranking of the subdomain geometrylite.poki2.online for the foll
 | H1 Keyword | ✅ Done | H1 = "Geometry Dash Lite Unblocked" |
 | Canonical / og:url | ✅ Done | All 8 game pages + homepage fixed to absolute `https://geometrylite.poki2.online/...` URLs |
 | Schema / Structured Data (VideoGame JSON-LD) | ✅ Done | Added to index.html + all 8 game pages (egg-dash, wave-dash, geometry-lite-classic, geometry-jump, geometry-game-3d, spooky-dash, tap-road-beat, xmas-dash) |
+| WebSite + FAQPage JSON-LD | ✅ Done | Injected into homepage — enables Sitelinks SearchBox + FAQ Rich Result |
 | robots.txt | ✅ Done | Created fresh; allows all, disallows /embed/, points to sitemap |
-| sitemap.xml | ✅ Done | Expanded 11 → 18 URLs with priorities; lastmod updated 2026-03-27 |
+| sitemap.xml | ✅ Done | 18 URLs; dynamic `lastmod` via `scripts/gen_sitemap.py` (`git log` per file) |
 | FAQ / Unblocked Content Section | ✅ Done | Added "WHY PLAY UNBLOCKED GAMES HERE?" H2 + 4-question FAQ with keywords unblocked games 66/76/g+ |
-| Domain migration script | ✅ Done | `.domain` file + `scripts/set-domain.sh` for one-command migration |
+| Domain migration script | ✅ Done | `.domain` file + `scripts/set-domain.sh` (full-depth, includes embed/, game/, scripts/*.py) |
+| Font | ✅ Done | Replaced Dosis with Nunito self-hosted woff2, latin subset 32 K |
+| github.io cleanup | ✅ Done | All residual `geometrylite.github.io` refs replaced across all HTML pages |
+| Game thumbnails | ✅ Done | 10 PNG images in `data/image/game/`; 36 og:image/twitter:image refs updated |
+| OG cover image | ✅ Done | 1200×630 `og-cover.png`; homepage og:image/twitter:image upgraded from 186×186 |
 | Internal Linking | ⚠️ Partial | Footer + same-domain game links exist; deeper cross-linking TBD |
 
 ## 3. Off-Page Optimization ✅ TECHNICAL SETUP COMPLETE — ACTIONS PENDING
@@ -127,18 +137,26 @@ curl https://geometrylite.poki2.online/sitemap.xml
 - `egg-dash.html`, `wave-dash.html`, `geometry-lite-classic.html`, `geometry-jump.html`, `geometry-game-3d.html`, `spooky-dash.html`, `tap-road-beat.html`, `xmas-dash.html` — Game pages with VideoGame schema
 - `about-us.html`, `contact-us.html`, `dmca.html`, `privacy-policy.html`, `terms-of-service.html`, `404.html`, `favorite.html` — Support pages
 - `robots.txt` — Crawl directives; blocks /embed/, points to sitemap
-- `sitemap.xml` — 18 URLs with priorities and lastmod dates
+- `sitemap.xml` — 18 URLs with priorities and dynamic lastmod (git-based via `gen_sitemap.py`)
+- `data/image/game/` — 10 game thumbnails (186×186 PNG) for per-game og:image
+- `data/image/options/og-cover.png` — 1200×630 brand cover for homepage og:image / Twitter Card
 - `CNAME` — `geometrylite.poki2.online`
 - `.domain` — Domain config for migration script
 
 ### Scripts (scripts/)
 | Script | Purpose |
 |---|---|
-| `set-domain.sh` | One-command domain migration — reads `.domain`, replaces across all HTML/sitemap/robots/CNAME |
+| `set-domain.sh` | One-command domain migration — full depth, includes embed/, game/, scripts/*.py |
 | `add_schema.py` | Inject VideoGame JSON-LD schema into all game pages |
+| `add_homepage_schema.py` | Inject WebSite + FAQPage JSON-LD into homepage |
 | `seo_offpage.py` | Add Twitter Card meta tags + fix share modal URLs across all pages |
 | `add_cwv_tracking.py` | Inject Core Web Vitals (LCP/CLS/INP) GA4 event tracking into all pages |
 | `fix_support_pages.py` | Fix canonical + og:url on support/legal pages |
+| `fix_github_io_links.py` | Replace residual github.io refs (favicon, nav, domain_url) |
+| `fix_og_images.py` | Fix 404.html github.io image refs; update homepage og:image to cover |
+| `gen_og_cover.py` | Generate 1200×630 og-cover.png (Pillow; use `.venv`) |
+| `gen_sitemap.py` | Regenerate sitemap.xml with lastmod from `git log` per file |
+| `copy_game_thumbs.py` | Copy cache/*-m186x186.png → data/image/game/ |
 | `seo_verify.py` | Full SEO audit — outputs per-page tag status table to `docs/seo-audit-report.md` |
 
 ### Docs (docs/)
@@ -179,6 +197,9 @@ curl https://geometrylite.poki2.online/sitemap.xml
 | Focus on "Geometry Dash Lite" + "unblocked games g+" as P1 keywords | Medium competition, natural brand fit — highest ROI vs high-DA competitors owning "unblocked games 66" | ✅ Implemented in title, H1, meta desc, keywords |
 | Use "unblocked games 66/76" as P2 via long-tail / FAQ content, not direct competition | These SERPs are dominated by branded sites with 100K+ backlinks; better to capture adjacent traffic | ✅ Implemented via FAQ section in index.html |
 | VideoGame JSON-LD schema on all game pages | No competitor has it — differentiator for Rich Results eligibility | ✅ Implemented on 9 pages |
+| WebSite + FAQPage JSON-LD on homepage | Enables Sitelinks SearchBox + FAQ Rich Result in SERP | ✅ Implemented |
+| 1200×630 og-cover.png for homepage | Twitter/OG spec; game thumbnails are 186×186 — homepage card needed full-size cover | ✅ Implemented |
+| Dynamic sitemap lastmod via `git log` | `lastmod` reflects actual last-commit date per file — more accurate signals to Googlebot | ✅ Implemented |
 | Domain config via `.domain` + `set-domain.sh` — no hardcoded domain in source | Enables zero-friction migration if subdomain changes | ✅ Implemented |
 | Absolute canonical + og:url on every page | Prevents Google treating relative-path pages as duplicate content | ✅ Implemented on all 16 pages |
 | Twitter Card meta on all pages | Enables rich previews when any page is shared on Twitter/X, Reddit, Slack | ✅ Implemented on all 16 pages |
