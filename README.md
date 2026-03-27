@@ -165,3 +165,33 @@ python3 scripts/seo_verify.py
 | 🟡 Medium | Create @geometrylite on Twitter, Facebook, Instagram |
 | 🟡 Medium | Link exchange outreach (unblockedgames66.io and similar) |
 | 🟢 Low | YouTube gameplay recordings (backlink source) |
+
+---
+
+## Work Status Update (2026-03-27 — Session 2)
+
+### ✅ Completed Since Last Summary
+
+| Commit | What Was Done |
+|---|---|
+| `4501507` | **Browser console warnings fixed** — removed unrecognized iframe `allow` features (`focus-without-user-activation *`, `monetization`) and redundant `allowfullscreen="true"` across all 9 game pages |
+| `13aeb03` | **Mac trackpad / mouse wheel scroll fix** — added transparent scroll-pass-through overlay to all 9 game player areas; wheel events forwarded to page until user clicks to play, restored on mouse-leave |
+| `33a91ed` | **Search box hidden** — temporarily hidden via `display:none !important` in `style.css` (single-line change, trivial to re-enable) |
+
+### ⚠️ Needs Refinement
+
+| Item | Current State | Next Step |
+|---|---|---|
+| Search box | Hidden (`display:none`) | Implement game search backend or client-side filter, then re-enable |
+| Game page og:image size | 186×186 px on 8 game detail pages | Replace `data/image/game/*/` files with 1200×630 versions when high-res art is available — no HTML changes needed |
+| Internal cross-linking | Footer + nav links only | Add 3–5 "Related Games" links on each game detail page to improve crawl depth and dwell time |
+
+### ❌ Not Started — Manual Off-Page Actions Only
+
+| Priority | Task |
+|---|---|
+| 🔴 High | Game directory submissions: CrazyGames, itch.io, Newgrounds, Poki (see `docs/off-page-guide.md`) |
+| 🔴 High | Reddit posts: r/WebGames, r/geometrydash, r/teenagers |
+| 🟡 Medium | Create @geometrylite social accounts (Twitter/X, Facebook, Instagram) |
+| 🟡 Medium | Link exchange outreach (unblockedgames66.io, similar GitHub Pages game sites) |
+| 🟢 Low | YouTube gameplay walkthroughs (organic backlink source) |
