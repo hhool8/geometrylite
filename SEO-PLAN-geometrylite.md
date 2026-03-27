@@ -26,9 +26,46 @@ Boost the Google ranking of the subdomain geometrylite.poki2.online for the foll
 | about-us domain | ✅ Fixed | Replaced geometrylite.github.io → geometrylite.poki2.online |
 | Schema/Structured Data | ❌ Missing | No GameApplication or WebPage schema — next priority |
 
-### Next Actions
-- Set priority and target ranking for each keyword.
-- Competitor research: review top-ranking sites for structure, backlinks, and on-page SEO.
+### ✅ Keyword Priority & Target Rankings (2026-03-27)
+
+| Keyword | Est. Monthly Searches | Competition | Priority | Target Rank |
+|---|---|---|---|---|
+| Geometry Dash Lite | 100K+ | Medium | P1 — Primary | Top 5 |
+| unblocked games g+ | 10K–50K | Medium-Low | P1 — Primary | Top 5 |
+| unblocked games g plus | 10K–50K | Medium-Low | P1 — Primary | Top 5 |
+| unblocked games 66 | 100K+ | High | P2 — Secondary | Top 10 |
+| games unblocked | 50K+ | High | P2 — Secondary | Top 10 |
+| unblocked games 76 | 10K–50K | Medium | P2 — Secondary | Top 10 |
+| unblocked games 77 | 10K–50K | Medium | P3 — Long-tail | Top 20 |
+
+**Rationale:** "Geometry Dash Lite" and "unblocked games g+" have medium competition and a natural brand fit — highest ROI. "unblocked games 66/76/77" are high-volume but dominated by branded competitors; target via long-tail variations.
+
+### ✅ Competitor Research (2026-03-27)
+
+**unblockedgames66.io** (ranks for unblocked games 66):
+- H1: "Online Games at Unblocked Games 66" — keyword in H1
+- H2s explain site value: "Why Choose…", "How to Access…"
+- Hundreds of games; publishes new games weekly
+- Social links: Facebook, Twitter, Instagram, Pinterest
+- Clean URL structure: `/game/{slug}`
+- No schema markup detected
+
+**geometrylite.github.io** (our upstream):
+- H1: "Geometry Dash Lite" — missing "unblocked"
+- Good H2/H3 content hierarchy (rhythm, gameplay, controls)
+- No GameApplication/VideoGame schema
+- No social links
+- Footer links still point to old github.io domain (fixed ✅)
+
+**Key Gaps vs Competitors:**
+- Our H1/title/description missing "unblocked" keyword signal
+- No structured data (schema.org GameApplication) — competitors also lack it, so this is a differentiator opportunity
+- No social signals / share buttons beyond basic share modal
+
+**Implemented Improvements:**
+- Updated index.html title tag to include "Unblocked"
+- Added VideoGame structured data (JSON-LD) to index.html
+- Added "unblocked games" to meta description on index.html
 
 ## 2. On-Page Optimization
 - Keyword Placement: Integrate target keywords into homepage, key pages, meta titles, descriptions, H1/H2, and body content.
